@@ -1,0 +1,16 @@
+/*
+ * Project: pico9918
+ *
+ * Copyright (c) 2024 Troy Schrapel
+ *
+ * This code is licensed under the MIT license
+ *
+ * https://github.com/visrealm/pico9918
+ *
+ */
+
+.program clock
+.wrap_target
+    set pins, 1
+    set pins, 0
+.wrap
