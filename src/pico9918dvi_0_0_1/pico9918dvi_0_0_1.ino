@@ -276,23 +276,16 @@ static void __time_critical_func(tmsScanline)(uint16_t y, uint16_t* pixels){
 
     /*** top and bottom borders ***/
     if ((y < vBorder) || (y >= (vBorder + TMS9918_PIXELS_Y))) {
-
         for (uint x = 0; x < DVI_SCREEN_WIDTH; x++) {
-
             pixels[x] = bgColor;
-
         }
-
         return;
     }
 
-    y -= vBorder;
-
     /*** main display region ***/
-
+    y -= vBorder;
     /* generate the scanline */
     uint8_t tempStatus = vrEmuTms9918ScanLine(y, tmsScanlineBuffer);
-
 
     // ***interrupt signal? ***
     if (y == TMS9918_PIXELS_Y - 1){
@@ -300,41 +293,29 @@ static void __time_critical_func(tmsScanline)(uint16_t y, uint16_t* pixels){
     }
 
     disableTmsPioInterrupts();
-
     if ((currentStatus & STATUS_INT) == 0){
-         currentStatus = (currentStatus & 0xe0) | tempStatus;
-
+        currentStatus = (currentStatus & 0xe0) | tempStatus;
         vrEmuTms9918SetStatusImpl(currentStatus);
         updateTmsReadAhead();
-
         currentInt = vrEmuTms9918InterruptStatusImpl();
         gpio_put(GPIO_INT, !currentInt);
     }
-
     enableTmsPioInterrupts();
-
 
     /*** left border ***/
     for (uint x = 0; x < hBorder; ++x) {
-
         pixels[x] = bgColor;
-
     }
 
     uint tmsX = 0;
     for (uint x = hBorder; x < hBorder + TMS9918_PIXELS_X; ++x, ++tmsX) {
-
         pixels[x] = rgba2rgb565(tms9918Palette[tmsScanlineBuffer[tmsX] & 0x0f]);
-
     }
 
     /*** right border ***/
     for (uint x = hBorder + TMS9918_PIXELS_X; x < DVI_SCREEN_WIDTH; ++x) {
-
         pixels[x] = bgColor;
-
     }
-
 }
 
 
@@ -342,12 +323,10 @@ static void __time_critical_func(tmsScanline)(uint16_t y, uint16_t* pixels){
 void setup() {
   // put your setup code here, to run once:
 
-
   //set_sys_clock_pll(PICO_CLOCK_PLL, PICO_CLOCK_PLL_DIV1, PICO_CLOCK_PLL_DIV2);   // 252000
 
     /* we need one of these. it's the main guy */
     vrEmuTms9918Init();
-
 
     // set up gpio pins
     gpio_init_mask(GPIO_CD_MASK | GPIO_CSR_MASK | GPIO_CSW_MASK | GPIO_MODE_MASK | GPIO_INT_MASK);
@@ -372,12 +351,8 @@ void setup() {
     setPico9918colors(PICO9918PALETTE);
 
     display.setScanlineFn(&tmsScanline);
-
     display.begin();
-
-
     display.render_loop();
-
 }
 
 

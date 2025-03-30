@@ -100,10 +100,10 @@ bool DVILine16::begin(void) {
     dvi0.scanline_callback = scanline_callback_GFXLine16;
     PicoDVI::begin();
 
-	for (int i = 0; i < n_scanlines; ++i) {
-	  void *bufptr = (void *)(linebufptr16 + (dviWidth * i));
-	  queue_add_blocking_u32(&dvi0.q_colour_free, &bufptr);
-	}
+    for (int i = 0; i < n_scanlines; ++i) {
+      void *bufptr = (void *)(linebufptr16 + (dviWidth * i));
+      queue_add_blocking_u32(&dvi0.q_colour_free, &bufptr);
+    }
 
     wait_begin = false; // Set core 1 in motion
 

@@ -12,7 +12,6 @@
 
 #include <PicoDVI.h>
 
-
 class DVILineBuf16 {
 public:
   DVILineBuf16(uint16_t w, uint16_t h, uint16_t n);
