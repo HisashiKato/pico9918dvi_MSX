@@ -43,7 +43,7 @@ Arduino IDE を使用してコンパイル (ビルド) します。
 　素晴らしいプロダクトの開発、本当にありがとうございます。</br></br>
 **PicoDVI - Adafruit Fork** の、さらにフォーク [https://github.com/HisashiKato/PicoDVI](https://github.com/HisashiKato/PicoDVI)  
 　[PicoDVI - Adafruit Fork](https://github.com/adafruit/PicoDVI) の最新版 1.3.0 では更新されていない箇所があるので、それを適応するために自分用に作ったフォークです。これを使っています。</br></br>
-**【壊れても知りません！】PICO9918 v0.4.2 for Pico2** [https://github.com/piigaa-densetu-two-dai/pico9918_for_pico2](https://github.com/piigaa-densetu-two-dai/pico9918_for_pico2)  
+**PICO9918 v0.4.2 for Pico2** [https://github.com/piigaa-densetu-two-dai/pico9918_for_pico2](https://github.com/piigaa-densetu-two-dai/pico9918_for_pico2)  
 　[ピーガー伝説➋代](https://x.com/AOldfJaHcEmvAWC/)さんの[【壊れても知りません！】PICO9918 v0.4.1 for Pico2
 物好きなDIY野郎専用](https://x.com/AOldfJaHcEmvAWC/status/1842423985910534281) を参考にさせていただきました。様々な拡張ボードを開発されている方で、毎回とても楽しく拝見させていただいています。
 
