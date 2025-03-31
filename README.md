@@ -26,7 +26,7 @@ Raspberry Pi Pico 2 を使用、レベルシフターを省略、直結します
 ### ハードウェア
 
 <img src="img/PICO9918DVIinMX101.jpg" width="600"></br></br>
-※私が唯一、所有している MSX カシオ(CASIO) MX-101 に組み込んでみました。</br></br>
+**※** 私が唯一、所有している MSX カシオ(CASIO) MX-101 に組み込んでみました。</br></br>
 <img src="img/PICO9918DVI_4.jpg" width="600"></br></br>
 使用する部品は、基本、Raspberry Pi Pico 2 (その他、RP2350 搭載の Pico2 互換ボード) と、Pico DVI Sock (DVIコネクタ基板) だけです。  
 詳しくは [PICO9918DVI ハードウェア](/Hardware/README.md) を読んでください。</br></br>
@@ -39,7 +39,11 @@ Arduino IDE を使用してコンパイル (ビルド) します。
 
 ### 関連リンク
 
-PICO9918 [https://github.com/visrealm/pico9918](https://github.com/visrealm/pico9918)  
+**PICO9918** [https://github.com/visrealm/pico9918](https://github.com/visrealm/pico9918)  
 　素晴らしいプロダクトの開発、本当にありがとうございます。</br></br>
-
+**PicoDVI - Adafruit Fork** の、さらにフォーク [https://github.com/HisashiKato/PicoDVI](https://github.com/HisashiKato/PicoDVI)  
+　[PicoDVI - Adafruit Fork](https://github.com/adafruit/PicoDVI) の最新版 1.3.0 では更新されていない箇所があるので、それを適応するために自分用に作ったフォークです。これを使っています。</br></br>
+**【壊れても知りません！】PICO9918 v0.4.2 for Pico2** [https://github.com/piigaa-densetu-two-dai/pico9918_for_pico2](https://github.com/piigaa-densetu-two-dai/pico9918_for_pico2)  
+　[ピーガー伝説➋代](https://x.com/AOldfJaHcEmvAWC/)さんの[【壊れても知りません！】PICO9918 v0.4.1 for Pico2
+物好きなDIY野郎専用](https://x.com/AOldfJaHcEmvAWC/status/1842423985910534281) を参考にさせていただきました。様々な拡張ボードを開発されている方で、毎回とても楽しく拝見させていただいています。
 
