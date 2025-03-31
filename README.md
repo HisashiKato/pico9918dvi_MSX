@@ -33,9 +33,13 @@ Raspberry Pi Pico 2 を使用、レベルシフターを省略、直結します
 
 ### ソフトウェア
 
-オリジナルの PICO9918 のファームウェアの、VGA 表示部分を外して、PicoDVIライブラリ (Raspberry Pi Pico シリーズ (RP2040,RP2350搭載ボード) で DVI (HDMI) 表示を可能にするライブラリ) を組み込みました。  
-Arduino IDE を使用して、コンパイル (ビルド) します。  
+オリジナルの PICO9918 のファームウェアの VGA 表示部分を外して、PicoDVIライブラリ (Raspberry Pi Pico シリーズ (RP2040,RP2350搭載ボード) で DVI (HDMI) 表示を可能にするライブラリ) を組み込みました。  
+Arduino IDE を使用してコンパイル (ビルド) します。  
 詳しくは [PICO9918DVI ソフトウェア](/Software/README.md) を読んでください。</br></br>
 
+### 関連リンク
+
+PICO9918 [https://github.com/visrealm/pico9918](https://github.com/visrealm/pico9918)  
+　素晴らしいプロダクトの開発、本当にありがとうございます。</br></br>
 
 
