@@ -9,7 +9,7 @@
 PICO9918 は、Raspberry Pi Pico を使用して、昔のVDP TMS9918A を置き換えること (Drop-in replacement) を目的としたプロジェクトです。  
 [Troy Schrapel](https://github.com/visrealm) 氏が開発しています。PICO9918 のプロジェクトのGitHubのページはこちら [pico9918](https://github.com/visrealm/pico9918)  
 PICO9918 のTMS9918Aエミュレーションは、同じく Troy Schrapel 氏の [vrEmuts9918ライブラリ](https://github.com/visrealm/vrEmuTms9918) で処理されています。</br></br>
-レトロゲーム機やレトロPCで使用されている VDP TMS9918A (TMS9918,TMS9928A,TMS9118 等) を PICO9918 に置き換えることによって、VGA (アナログRGB 31KHz) の映像出力が得られます。  
+レトロゲーム機やレトロPCで使用されている VDP TMS9918A (TMS9918,TMS9928A,TMS9118 等) を外して PICO9918 に置き換えるだけで、VGA (アナログRGB 31KHz) の映像出力が可能になります。  
 日本で TMS9918A シリーズを使っているレトロゲーム機やレトロPCは、セガ SG-1000,SC-3000, トミー ぴゅう太, ソード M5, 初代 MSX (MSX1) 等です。</br></br>
 PICO9918 はオープンソースです。ファームウェアや基板のデータが公開されています。また Troy 氏が自ら製作した完成品のボードが海外のショップから購入出来ます(日本への発送が可能なショップです)。</br></br>
 
@@ -25,5 +25,17 @@ Raspberry Pi Pico 2 を使用、レベルシフターを省略、直結します
 
 ### ハードウェア
 
-<br><img src="img/PICO9918DVIinMX101.jpg" width="600"><br><br>
-<br><img src="img/PICO9918DVI_1.jpg" width="600"><br><br>
+<img src="img/PICO9918DVIinMX101.jpg" width="600"></br></br>
+※私が唯一、所有している MSX カシオ(CASIO) MX-101 に組み込んでみました。</br></br>
+<img src="img/PICO9918DVI_4.jpg" width="600"></br></br>
+使用する部品は、基本、Raspberry Pi Pico 2 (その他、RP2350 搭載の Pico2 互換ボード) と、Pico DVI Sock (DVIコネクタ基板) だけです。  
+詳しくは [PICO9918DVI ハードウェア](/Hardware/README.md) を読んでください。</br></br>
+
+### ソフトウェア
+
+オリジナルの PICO9918 のファームウェアの、VGA 表示部分を外して、PicoDVIライブラリ (Raspberry Pi Pico シリーズ (RP2040,RP2350搭載ボード) で DVI (HDMI) 表示を可能にするライブラリ) を組み込みました。  
+Arduino IDE を使用して、コンパイル (ビルド) します。  
+詳しくは [PICO9918DVI ソフトウェア](/Software/README.md) を読んでください。</br></br>
+
+
+
