@@ -1,21 +1,21 @@
 ### PICO9918DVI ソフトウェア
 
-PICO9918 のファームウェアの VGA 部分を、PicoDVI ライブラリに交換して、HDMIディスプレイへの出力に対応させました。  
+PICO9918 のファームウェアの VGA 部分を PicoDVI ライブラリに交換して HDMIディスプレイへの出力に対応させました。  
 元になっている PICO9918 のファームウェアは v0.4.3 です。  
-PICO9918DVI のメインのコードは Arduino 言語で記述、Arduino IDE を使用してコンパイル(ビルド)を行います。  
+PICO9918DVI のメインのコードは Arduino 言語で記述。Arduino IDE を使用してコンパイル(ビルド)を行います。  
 (なぜ Arduino 言語で記述しているのか、それは**私があまりに知識経験不足すぎて Arduino IDE しか扱えない**からです。ただそれだけ)
 
 ### オリジナルの PICO9918 との相違点
 
 ・スキャンラインの表示が未実装です。  
 ・電源投入時のロゴのアニメーションがありません。  
-・F18Aモードは未実装です。
+・F18Aモードは未対応です。
 
 ### ソースコードのコンパイル（ビルド）方法
 1. **Arduino IDE** を PC にインストール。
 2. Arduino IDE のボードマネージャで **Raspberry Pi Pico/RP2040/RP2350** をインストールして、Arduino IDE で Raspberry Pi Pico 2 を扱えるようにする。   
 3. Arduino IDE のライブラリマネージャーで **PicoDVI - Adafruit Fork** をインストール。<br/>
- **※** 但し **PicoDVI - Adafruit Fork** の **1.3.0** では、更新された内容が反映されていない可能性があります(多分)、なので、私は自分用にフォークして、自分なりに変更を適用したライブラリを使用しています。今のところは問題なく使えています。但し無保証です。<br/>
+ **※** 但し **PicoDVI - Adafruit Fork** の **1.3.0** では、更新された内容が反映されていない可能性があります(多分)、なので、私は自分用にフォークして、自分なりに変更を適用したライブラリを使用しています。今のところは問題なく使えています。(但し無保証)<br/>
  [https://github.com/HisashiKato/PicoDVI](https://github.com/HisashiKato/PicoDVI)<br/>
   これを使う場合は、いったんライブラリマネージャーで **PicoDVI - Adafruit Fork** を削除、私のフォークのリポジトリの Code から **Download ZIP** を選んでダウンロードして、Arduino IDE の スケッチ > ライブラリをインクルード > .ZIP形式のライブラリをインストール でダウンロードしたZIPを選択。<br/>
 4. ファームウェアのコードをダウンロード。<br/>
@@ -28,7 +28,16 @@ PICO9918DVI のメインのコードは Arduino 言語で記述、Arduino IDE �
 　　**Optimize: "Optimize Even More (-O3)"**<br/>
 　　**USB Stack: "No USB"**<br/>
 　と設定して、**検証**(VERIFY)、エラーが出なければOK  
-6. Pico 2 に書き込む。書き込み(UPLOAD)  
-
+6. Pico 2 に書き込む。<br/>
+　Raspberry Pi Pico 2 の BOOTSEL ボタンを押しながら、PC からの USBケーブルを Pico 2 に繋ぐ。<br/>
+　Arduino IDE の ツール で **ボード: "UF2_board"** を選択して、**書き込み**(UPLOAD)<br/><br/>
+  
+### 注意事項 ###
+PicoDVI ライブラリの動作確認で、プログラム例(Examples) を使用する際は、以下の cfg の変更を忘れずに（毎回忘れるよく忘れる）<br/>
+　例：  DVIGFX8 display(DVI_RES_320x240p60, true, xxxxxxxx_cfg);<br/>
+ピン設定等で使われる xxxxxxxx_cfg は、  
+x:\Users\xxxxxxx(UserName)\Documents\Arduino\libraries\PicoDVI_-_Adafruit_Fork\software\include\common_dvi_pin_configs.h  
+に記述されています。  
+あと、Pico と DVIコネクタとの結線の間違いも、よくやっちゃいます、注意。<br/><br/>
 
 以上？
