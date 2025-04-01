@@ -13,7 +13,7 @@ PICO9918DVI のメインのコードは Arduino 言語で記述。Arduino IDE �
 
 ### ソースコードのコンパイル（ビルド）方法
 1. **Arduino IDE** を PC にインストール。
-2. Arduino IDE のボードマネージャで **Raspberry Pi Pico/RP2040/RP2350** をインストールして、Arduino IDE で Raspberry Pi Pico 2 を扱えるようにする。   
+2. Arduino IDE のボードマネージャで **Raspberry Pi Pico/RP2040/RP2350** をインストールして、Arduino IDE で Raspberry Pi Pico 2 を扱えるようにする。(事前にLチカ Blink.ino 等をPico 2 ボードに書き込んで動作確認をしておく)   
 3. Arduino IDE のライブラリマネージャーで **PicoDVI - Adafruit Fork** をインストール。<br/>
  **※** 但し **PicoDVI - Adafruit Fork** の **1.3.0** では、更新された内容が反映されていない可能性があります(多分)、なので、私は自分用にフォークして、自分なりに変更を適用したライブラリを使用しています。今のところは問題なく使えています。(但し無保証)<br/>
  [https://github.com/HisashiKato/PicoDVI](https://github.com/HisashiKato/PicoDVI)<br/>
