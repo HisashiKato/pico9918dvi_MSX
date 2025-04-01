@@ -29,7 +29,7 @@ extern uint16_t tms9918PaletteBGR12[16];
 
 typedef enum {
   PICO9918PALETTE = 0, // PICO9918
-  MSXPALETTE_1,        // MSX1's dull colors  wiki
+  MSXPALETTE_1,        // MSX1's dull colors
   MSXPALETTE_2,        // MSX2's vivid colors
   PALETTE_NUM
 } MSXcolor16;
