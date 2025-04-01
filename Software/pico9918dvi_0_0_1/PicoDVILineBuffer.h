@@ -6,6 +6,14 @@
  * @file PicoDVI.h
  *
  * Arduino-and-Adafruit-GFX wrapper around Luke Wren's PicoDVI library.
+ *
+ *
+ * @file PicoDVILineBuffer.h
+ *
+ * modified by Hisashi Kato
+ *
+ * https://github.com/HisashiKato/pico9918dvi_MSX
+ *
  */
 
 #pragma once

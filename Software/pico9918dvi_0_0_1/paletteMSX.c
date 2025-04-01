@@ -7,6 +7,11 @@
  *
  * https://github.com/visrealm/pico9918
  *
+ *
+ * modified by Hisashi Kato
+ *
+ * https://github.com/HisashiKato/pico9918dvi_MSX
+ *
  */
 
 #include "pico/stdlib.h"

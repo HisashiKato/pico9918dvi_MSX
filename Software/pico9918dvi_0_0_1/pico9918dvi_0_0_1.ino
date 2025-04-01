@@ -10,7 +10,7 @@
  *
  * modified by Hisashi Kato
  *
- * https://github.com/visrealm/pico9918dvi
+ * https://github.com/HisashiKato/pico9918dvi_MSX
  *
  */
 
@@ -345,8 +345,8 @@ void setup() {
       MSX1 software on MSX2
 
       PICO9918PALETTE //PICO9918 default colors
-      MSXPALETTE_1   //MSX1's dull colors
-      MSXPALETTE_2   //MSX2's vivid colors
+      MSXPALETTE_1    //MSX1's dull colors
+      MSXPALETTE_2    //MSX2's vivid colors
     */
     setPico9918colors(PICO9918PALETTE);
 
