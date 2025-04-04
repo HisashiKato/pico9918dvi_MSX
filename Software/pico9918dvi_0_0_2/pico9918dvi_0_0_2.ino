@@ -10,7 +10,7 @@
  *
  * modified by Hisashi Kato
  *
- * https://github.com/HisashiKato/pico9918dvi_MSX
+ * https://github.com/visrealm/pico9918dvi
  *
  */
 
@@ -48,9 +48,9 @@
   *  11  |   8  |  /CSR     |  15
   *  12  |   9  |  /CSW     |  14
   *  14  |  10  |  MODE     |  13
+  *  27  |  21  |  CPUCLK   |  38
+  *  29  |  22  |  /INT     |  16
   *  30  |  RUN |  RST      |  34
-  *  31  |  26  |  /INT     |  16
-  *  32  |  27  |  CPUCLK   |  38
   *   x  |   x  |  GROMCLK  |  37 // MSX1 is not Use GROMCLK
 */
 
@@ -63,14 +63,14 @@
 #define GPIO_CSR tmsRead_CSR_PIN  // defined in tms9918.pio // GPIO 8
 #define GPIO_CSW tmsWrite_CSW_PIN // defined in tms9918.pio // GPIO 9
 #define GPIO_MODE 10 // MODE GPIO 10
-#define GPIO_INT 26  // INT  GPIO 26
+#define GPIO_INT 22  // INT  GPIO 22
 
 #if PCB_MAJOR_VERSION != 0
 #error "Time traveller?"
 #endif
 
 #if PCB_MINOR_VERSION < 4
-#define GPIO_CPUCL 27 // CPUCLK GPIO 27
+#define GPIO_CPUCL 21 // CPUCLK GPIO 21
 #else
 #define GPIO_GROMCL 25
 #define GPIO_CPUCL 24
@@ -126,13 +126,15 @@ void  __not_in_flash_func(pio_irq_handler)() {
     if ((TMS_PIO->fstat & (1u << (PIO_FSTAT_RXEMPTY_LSB + tmsWriteSm))) == 0) { // write?
 
         uint32_t writeVal = TMS_PIO->rxf[tmsWriteSm];
+        uint8_t dataVal = writeVal & 0xff;
+        writeVal >>= ((GPIO_MODE - GPIO_CD7) + 16);
 
-        if (writeVal & (GPIO_MODE_MASK >> GPIO_CD7)) { // write reg/addr
-            vrEmuTms9918WriteAddrImpl(writeVal & 0xff);
+        if (writeVal & 0x01) { // write reg/addr
+            vrEmuTms9918WriteAddrImpl(dataVal);
             currentInt = vrEmuTms9918InterruptStatusImpl();
             gpio_put(GPIO_INT, !currentInt);
         } else { // write data
-            vrEmuTms9918WriteDataImpl(writeVal & 0xff);
+            vrEmuTms9918WriteDataImpl(dataVal);
         }
         nextValue = vrEmuTms9918ReadDataNoIncImpl();
         updateTmsReadAhead();
@@ -223,7 +225,7 @@ void tmsPioInit() {
 
     pio_sm_config writeConfig = tmsWrite_program_get_default_config(tmsWriteProgram);
     sm_config_set_in_pins(&writeConfig, GPIO_CD7);
-    sm_config_set_in_shift(&writeConfig, false, true, 16); // L shift, autopush @ 16 bits
+    sm_config_set_in_shift(&writeConfig, false, true, 32); // L shift, autopush @ 16 bits
     sm_config_set_clkdiv(&writeConfig, 1.0f);
 
     pio_sm_init(TMS_PIO, tmsWriteSm, tmsWriteProgram, &writeConfig);
@@ -345,8 +347,8 @@ void setup() {
       MSX1 software on MSX2
 
       PICO9918PALETTE //PICO9918 default colors
-      MSXPALETTE_1    //MSX1's dull colors
-      MSXPALETTE_2    //MSX2's vivid colors
+      MSXPALETTE_1   //MSX1's dull colors
+      MSXPALETTE_2   //MSX2's vivid colors
     */
     setPico9918colors(PICO9918PALETTE);
 

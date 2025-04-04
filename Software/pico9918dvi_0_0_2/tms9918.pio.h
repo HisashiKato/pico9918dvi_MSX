@@ -65,23 +65,24 @@ static inline pio_sm_config tmsRead_program_get_default_config(uint offset) {
 // -------- //
 
 #define tmsWrite_wrap_target 0
-#define tmsWrite_wrap 2
+#define tmsWrite_wrap 3
 #define tmsWrite_pio_version 0
 
 #define tmsWrite_CSW_PIN 9
 
 static const uint16_t tmsWrite_program_instructions[] = {
             //     .wrap_target
-    0x2c09, //  0: wait   0 gpio, 9              [12]
+    0x2009, //  0: wait   0 gpio, 9                  
     0x4010, //  1: in     pins, 16                   
-    0x2c89, //  2: wait   1 gpio, 9              [12]
+    0x2089, //  2: wait   1 gpio, 9                  
+    0x4010, //  3: in     pins, 16                   
             //     .wrap
 };
 
 #if !PICO_NO_HARDWARE
 static const struct pio_program tmsWrite_program = {
     .instructions = tmsWrite_program_instructions,
-    .length = 3,
+    .length = 4,
     .origin = -1,
     .pio_version = 0,
 #if PICO_PIO_VERSION > 0
