@@ -36,7 +36,7 @@ PICO9918DVI のメインのコードは Arduino 言語で記述。Arduino IDE �
 
   
 ### 注意事項 ###
-**pioasm** を使用して手動で `xxx.pio` ファイルから `xxx.pio.h` ファイルを生成します。  
+`xxx.pio` を書き換えたときは、**pioasm** を使用して手動で `xxx.pio` ファイルから `xxx.pio.h` ファイルを生成します。  
 PicoDVI ライブラリの動作確認で、プログラム例(Examples) を使用する際は、以下の cfg の変更を忘れずに（毎回忘れるよく忘れる）<br/>
 　例：  DVIGFX8 display(DVI_RES_320x240p60, true, xxxxxxxx_cfg);<br/>
 ピン設定等で使われる xxxxxxxx_cfg は、  
