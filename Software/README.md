@@ -1,7 +1,7 @@
 ### PICO9918DVI ソフトウェア
 
 PICO9918 のファームウェアの VGA 部分を PicoDVI ライブラリに交換して HDMIディスプレイへの出力に対応させました。  
-元になっている PICO9918 のファームウェアは v0.4.3 です。  
+元になっている PICO9918 のファームウェアは v0.4.4 です。  
 PICO9918DVI のメインのコードは Arduino 言語で記述。Arduino IDE を使用してコンパイル(ビルド)を行います。  
 (なぜ Arduino 言語で記述しているのか、それは**私があまりに知識経験不足すぎて Arduino IDE しか扱えない**からです。ただそれだけ)
 
@@ -36,6 +36,7 @@ PICO9918DVI のメインのコードは Arduino 言語で記述。Arduino IDE �
 
   
 ### 注意事項 ###
+**pioasm** を使用して手動で `xxx.pio` ファイルから `xxx.pio.h` ファイルを生成します。  
 PicoDVI ライブラリの動作確認で、プログラム例(Examples) を使用する際は、以下の cfg の変更を忘れずに（毎回忘れるよく忘れる）<br/>
 　例：  DVIGFX8 display(DVI_RES_320x240p60, true, xxxxxxxx_cfg);<br/>
 ピン設定等で使われる xxxxxxxx_cfg は、  
