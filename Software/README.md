@@ -14,7 +14,7 @@ PICO9918DVI のメインのコードは Arduino 言語で記述。Arduino IDE �
 ### ソースコードのコンパイル（ビルド）方法
 1. **Arduino IDE** を PC にインストール。
 2. Arduino IDE のボードマネージャに [ **Raspberry Pi Pico/RP2040/RP2350 ”Arduino Pico” (EarlePhilhower版)** ](https://github.com/earlephilhower/arduino-pico) を追加、インストール。インストール方法は[こちら](https://github.com/earlephilhower/arduino-pico#installation)
-3. Arduino IDE でLチカ Blink.ino 等を Pico 2 ボードに書き込んで動作確認、Arduino IDE で Raspberry Pi Pico 2 を扱えるようにしておく。   
+3. Arduino IDE で Pico 2 ボードに Blink.ino (Lチカ) 等を書き込んで動作確認、Arduino IDE で Raspberry Pi Pico 2 を扱えるようにしておく。   
 4. Arduino IDE のライブラリマネージャーで **PicoDVI - Adafruit Fork** をインストール。<br/>
  **※** 但し **PicoDVI - Adafruit Fork** の **1.3.0** では、更新された内容が反映されていない可能性があります(多分)、なので、私は自分用にフォークして、自分なりに変更を適用したライブラリを使用しています。今のところは問題なく使えています。(但し無保証)<br/>
  [https://github.com/HisashiKato/PicoDVI](https://github.com/HisashiKato/PicoDVI)<br/>
@@ -34,7 +34,7 @@ PICO9918DVI のメインのコードは Arduino 言語で記述。Arduino IDE �
 　Arduino IDE の ツール で **ボード: "UF2_board"** を選択して、**書き込み**(UPLOAD)<br/><br/>
 
 　**※** コンパイル済みの [UF2](./UF2) を置いておきます。<br/><br/><br/>
-　**※** 少し加筆して Ver.0.0.4 に上げました、が、不具合があります。(MAY 24 2025)<br/>
+　**※** 少し加筆して Ver.0.0.4 に上げました。が、不具合があります。(MAY 24 2025)<br/>
  　　（Ver.0.0.3 は欠番です）<br/><br/>
 
   
