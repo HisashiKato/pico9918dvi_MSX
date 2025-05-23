@@ -262,6 +262,8 @@ void tmsPioInit() {
 
 // Setting "#define WIDE_SCREEN 1" will reduce horizontal stretching
 // when the display is in 16:9 format.
+// However, doing this will change the operating frequency, 
+// which will change the pitch of the audio.
 #define WIDE_SCREEN 0
 
 //#include <PicoDVI.h>
