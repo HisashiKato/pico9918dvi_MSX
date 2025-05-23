@@ -22,7 +22,7 @@ PICO9918DVI のメインのコードは Arduino 言語で記述。Arduino IDE �
 5. ファームウェアのコードをダウンロード。<br/>
 　**pico9918dvi_MSX** のリポジトリの Code から **Download ZIP** を選んでダウンロードして、任意のフォルダに展開。  
 6. 試しにコンパイルしてみる。<br/>
-　Arduino IDE の ファイル > 開く で展開したフォルダの Software/pico9918dvi_0_0_2/pico9918dvi_0_0_2.ino を選択。<br/>
+　Arduino IDE の ファイル > 開く で展開したフォルダの Software/pico9918dvi/pico9918dvi.ino を選択。<br/>
 　Arduino IDE の ツール で、<br/>
 　　**ボード: "Raspberry Pi Pico 2"**<br/>
 　　**CPU Architecture: "ARM"**<br/>
