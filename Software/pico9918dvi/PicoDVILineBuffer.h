@@ -36,7 +36,7 @@ class DVILine16 : public PicoDVI, public DVILineBuf16 {
 public:
   DVILine16(const DVIresolution res = DVI_RES_320x240p60,
           const struct dvi_serialiser_cfg &c = pico_sock_cfg,
-          const uint16_t n_lines = 4,
+          const uint16_t n_lines = 6,
           vreg_voltage v = VREG_VOLTAGE_1_20);
   ~DVILine16(void);
 

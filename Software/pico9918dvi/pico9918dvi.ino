@@ -8,9 +8,11 @@
  * https://github.com/visrealm/pico9918
  *
  *
- * modified by Hisashi Kato
+ * pico9918dvi_MSX ver.0.0.4 (MAY 24 2025)
  *
  * https://github.com/HisashiKato/pico9918dvi_MSX
+ *
+ * modified by Hisashi Kato
  *
  */
 
@@ -254,21 +256,45 @@ void tmsPioInit() {
 }
 
 
+/*
+ * Set up PicoDVI for Arduino
+ */
+
+// Setting "#define WIDE_SCREEN 1" will reduce horizontal stretching
+// when the display is in 16:9 format.
+#define WIDE_SCREEN 0
 
 //#include <PicoDVI.h>
 #include "PicoDVILineBuffer.h"
 
+#if WIDE_SCREEN == 1
+#define DVI_SCREEN_WIDTH  400
+#else
 #define DVI_SCREEN_WIDTH  320
+#endif
+
 #define DVI_SCREEN_HEIGHT 240
 
-uint32_t tms9918Palette[16];
+#define BG_WIDTH  320
+#define BG_HEIGHT 240
 
-const uint32_t vBorder = ((DVI_SCREEN_HEIGHT - TMS9918_PIXELS_Y) / 2);
-const uint32_t hBorder = ((DVI_SCREEN_WIDTH - TMS9918_PIXELS_X) / 2);
 
 static uint8_t __aligned(4) tmsScanlineBuffer[TMS9918_PIXELS_X];
 
-DVILine16 display(DVI_RES_320x240p60, pico_sock_cfg);
+uint32_t tms9918Palette[16];
+
+const uint32_t hBorder = (BG_WIDTH - TMS9918_PIXELS_X) / 2;
+const uint32_t vBorder = (BG_HEIGHT - TMS9918_PIXELS_Y) / 2;
+
+const uint32_t sideFillWidth = (DVI_SCREEN_WIDTH - BG_WIDTH) / 2;
+const uint16_t sideFillColor = 0x0000;
+
+
+#if WIDE_SCREEN == 1
+DVILine16 display(DVI_RES_400x240p60, pico_sock_cfg); // 400x240 (800x480)
+#else
+DVILine16 display(DVI_RES_320x240p60, pico_sock_cfg); // 320x240 (640x480)
+#endif
 
  
 //static void __time_critical_func(tmsScanline)(uint16_t y, uint8_t* pixels){
@@ -279,6 +305,11 @@ static void __time_critical_func(tmsScanline)(uint16_t y, uint16_t* pixels){
     /*** top and bottom borders ***/
     if ((y < vBorder) || (y >= (vBorder + TMS9918_PIXELS_Y))) {
         for (uint x = 0; x < DVI_SCREEN_WIDTH; x++) {
+#if WIDE_SCREEN == 1
+            if ((x < sideFillWidth) || (x >= (sideFillWidth + BG_WIDTH)))
+                pixels[x] = sideFillColor;
+            else
+#endif
             pixels[x] = bgColor;
         }
         return;
@@ -306,16 +337,26 @@ static void __time_critical_func(tmsScanline)(uint16_t y, uint16_t* pixels){
 
     /*** left border ***/
     for (uint x = 0; x < hBorder; ++x) {
+#if WIDE_SCREEN == 1
+        if (x < sideFillWidth)
+            pixels[x] = sideFillColor;
+        else
+#endif
         pixels[x] = bgColor;
     }
 
     uint tmsX = 0;
-    for (uint x = hBorder; x < hBorder + TMS9918_PIXELS_X; ++x, ++tmsX) {
+    for (uint x = (sideFillWidth + hBorder); x < (sideFillWidth + hBorder + TMS9918_PIXELS_X); ++x, ++tmsX) {
         pixels[x] = rgba2rgb565(tms9918Palette[tmsScanlineBuffer[tmsX] & 0x0f]);
     }
 
     /*** right border ***/
-    for (uint x = hBorder + TMS9918_PIXELS_X; x < DVI_SCREEN_WIDTH; ++x) {
+    for (uint x = (sideFillWidth + hBorder + TMS9918_PIXELS_X); x < DVI_SCREEN_WIDTH; ++x) {
+#if WIDE_SCREEN == 1
+        if (x >= (sideFillWidth + BG_WIDTH))
+            pixels[x] = sideFillColor;
+        else
+#endif
         pixels[x] = bgColor;
     }
 }
