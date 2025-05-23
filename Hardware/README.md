@@ -7,12 +7,14 @@
 今回のファームウェアでは以下のようなピン配置にしています。ピン配置はソースコードの書き換えで、条件がありますが変更できます。<br/>
 **※ピン配置を少し変えました(April 4 2025)** <br/>
 <br/><img src="../img/PICO9918DVI_1.jpg" width="600"><br/><br/>
+<br/><img src="../img/dvi_sock.jpg" width="600"><br/>
+※市販されている Raspberry Pi Pico / Pico 2 用の DVI コネクタ ( Pico DVI Sock / DVI Breakout ) 色々<br/><br/>
 
 ### 注意事項
 Raspberry Pi Pico の RP2040 の GPIO の入力電圧は 3.3V でしたが、Raspberry Pi Pico 2 の RP2350 シリーズのアナログ入力対応ピン以外の GPIO は、条件次第で(具体的にはIOVDD=3.3Vの時) 5.5Vまで入れても大丈夫な仕様になりました。(RP2350 Datasheet 1335page 参照)  
 **RP2350 Datasheet:** [rp2350-datasheet.pdf](https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf)
 **14.9.1. Absolute Maximum Ratings** の Voltage at IO (FT) および **14.8.2.1. Pin Types** を読んでみてください。  
-但し **IOVDD=3.3Vの時** という条件付きなので、**完全に 5Vトレラントという訳ではありません** 。  
+但し **IOVDD=3.3Vの時** という条件付きなので、**5Vトレラントという訳ではありません** 。  
 しかし、とりあえず、今回は大丈夫だろうと、個人的には判断しました。( **ダメだったらごめんなさい** )<br/><br/>
 MSX では GROMCLK は未使用です。また TMS9928A 搭載機では 38pin が CPUCLK ではなく R-Y なので、Pico 2 からの CLK は繋がないでください。<br/><br/>
 RESET を Pico 2 の RUN に繋ぐと動かない場合があります(今回の私の MX-101 がそうでした)  
