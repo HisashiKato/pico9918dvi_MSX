@@ -33,12 +33,12 @@ PICO9918DVI のメインのコードは Arduino 言語で記述。Arduino IDE �
 　Raspberry Pi Pico 2 の BOOTSEL ボタンを押しながら、PC からの USBケーブルを Pico 2 に繋ぐ。<br/>
 　Arduino IDE の ツール で **ボード: "UF2_board"** を選択して、**書き込み**(UPLOAD)<br/><br/>
 
-　**※** コンパイル済みの [UF2](./UF2) を置いておきます。<br/><br/><br/>
-　**※** 少し加筆して Ver.0.0.4 に上げました。が、不具合があります。(MAY 24 2025)<br/>
- 　　（Ver.0.0.3 は欠番です）<br/><br/>
+　**※** コンパイル済みの [UF2](./UF2) を置いておきます。<br/><br/>
+　**※** Ver.0.0.4 に不具合があったので、Ver.0.0.2 に戻しました。<br/><br/>
 
   
 ### 注意事項 ###
+PicoDVIを扱うときの注意点  
 `xxx.pio` を書き換えたときは、**pioasm** を使用して手動で `xxx.pio` ファイルから `xxx.pio.h` ファイルを生成します。  
 PicoDVI ライブラリの動作確認で、プログラム例(Examples) を使用する際は、以下の cfg の変更を忘れずに（毎回忘れるよく忘れる）<br/>
 　例：  DVIGFX8 display(DVI_RES_320x240p60, true, xxxxxxxx_cfg);<br/>
